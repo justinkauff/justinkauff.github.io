@@ -3,12 +3,14 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="referrer" content="strict-origin-when-cross-origin" />
 <title>Justin Kauff | Portfolio</title>
 
 <meta property="og:title" content="Justin Kauff | Portfolio" />
 <meta property="og:description" content="Software engineering, embedded systems, and robotics projects." />
 <meta property="og:url" content="https://justinkauff.github.io/" />
 <meta property="og:type" content="website" />
+
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -210,6 +212,11 @@ section{padding:8rem 5vw;}
 .proj-body a{color:var(--rust);text-decoration:none;border-bottom:1px solid var(--rust);}
 .proj-body a:hover{color:var(--ink);}
 .proj-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.proj-video{margin:1.5rem 0;position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:1px solid var(--rule);}
+.proj-video iframe{position:absolute;top:0;left:0;width:100%;height:100%;}
+.proj-links{display:flex;gap:1rem;margin-bottom:1.25rem;flex-wrap:wrap;}
+.proj-link{font-family:var(--cond);font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;color:var(--rust);border:1px solid var(--rust);padding:0.3rem 0.8rem;transition:all 0.2s;}
+.proj-link:hover{background:var(--rust);color:var(--cream);}
 .tag{font-family:var(--cond);font-size:0.6rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:0.28rem 0.75rem;border:1px solid var(--rule);color:var(--mid);transition:all 0.2s;}
 .proj:hover .tag{border-color:rgba(184,92,42,0.35);color:var(--ink);}
 
@@ -338,32 +345,74 @@ footer{
   </div>
   <div class="proj-grid">
     <div class="proj reveal">
-      <div class="proj-header"><div class="proj-num">01</div><div class="proj-icon"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="1"/><path d="M8 8V6a4 4 0 018 0v2"/><circle cx="9" cy="14" r="1.5"/><circle cx="15" cy="14" r="1.5"/><line x1="9" y1="17" x2="15" y2="17"/><line x1="12" y1="2" x2="12" y2="4"/></svg></div></div>
+      <div class="proj-header"><div class="proj-num">01</div><div class="proj-icon"><svg viewBox="0 0 24 24"><circle cx="5" cy="7" r="2"/><line x1="7" y1="7" x2="20" y2="7"/><line x1="4" y1="7" x2="4" y2="7" stroke-linecap="round"/><circle cx="12" cy="12" r="2"/><line x1="14" y1="12" x2="20" y2="12"/><line x1="4" y1="12" x2="10" y2="12"/><circle cx="7" cy="17" r="2"/><line x1="9" y1="17" x2="20" y2="17"/><line x1="4" y1="17" x2="5" y2="17"/></svg></div></div>
+      <p class="proj-eyebrow">Controls and Dynamic Systems · Spring 2026</p>
+      <h3 class="proj-title">2-DOF Ball Balancing System</h3>
+      <p class="proj-body">Real-time closed-loop control system balancing a steel ball on a tilting platform using two servo actuators and a resistive touchscreen sensor. PID control implemented on Arduino with ADC-to-millimeter calibration; MATLAB/Simulink for modeling and controller tuning.</p>
+      <div class="proj-video">
+        <iframe
+          src="https://www.youtube.com/embed/Ehfmd9drehQ"
+          title="2-DOF Ball Balancing System"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/justinkauff/BallBalancer" target="_blank" rel="noopener" class="proj-link">GitHub ↗</a>
+      </div>
+      <div class="proj-tags"><span class="tag">Arduino</span><span class="tag">Embedded C</span><span class="tag">PID</span><span class="tag">MATLAB</span><span class="tag">Simulink</span></div>
+    </div>
+    <div class="proj reveal d1">
+      <div class="proj-header"><div class="proj-num">02</div><div class="proj-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></div></div>
+
+      <p class="proj-eyebrow">Computer Vision · Spring 2026</p>
+
+      <h3 class="proj-title">Vision-Based Finger Painting System</h3>
+
+      <p class="proj-body">
+        Real-time computer vision application that transforms webcam input into an interactive finger-painting canvas. Uses HSV color segmentation, morphological filtering, contour detection, and image moments to track fingertip position, while YOLOv8 object recognition dynamically changes brush color based on detected objects.
+      </p>
+
+      <div class="proj-video">
+        <iframe
+          src="https://www.youtube.com/embed/F0z0W6R_NrU"
+          title="Vision-Based Finger Painting System"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="proj-links">
+        <a href="https://github.com/justinkauff/CVFingerPainting"
+          target="_blank"
+          rel="noopener"
+          class="proj-link">GitHub ↗</a>
+      </div>
+
+      <div class="proj-tags">
+        <span class="tag">Python</span>
+        <span class="tag">OpenCV</span>
+        <span class="tag">YOLOv8</span>
+        <span class="tag">HSV Segmentation</span>
+        <span class="tag">Object Recognition</span>
+        <span class="tag">Real-Time Tracking</span>
+      </div>
+    </div>
+    <div class="proj reveal d1">
+      <div class="proj-header"><div class="proj-num">03</div><div class="proj-icon"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="1"/><path d="M8 8V6a4 4 0 018 0v2"/><circle cx="9" cy="14" r="1.5"/><circle cx="15" cy="14" r="1.5"/><line x1="9" y1="17" x2="15" y2="17"/><line x1="12" y1="2" x2="12" y2="4"/></svg></div></div>
       <p class="proj-eyebrow">Research · 2025–Present</p>
       <h3 class="proj-title">Autonomous Service Dog</h3>
       <p class="proj-body">Developing the software stack for an autonomous service-dog system on the Unitree Go1. Deploys VLMs and LLMs via Hugging Face and AWS SageMaker for multimodal perception, with a vision-to-action pipeline converting model outputs into ROS navigation and object interaction commands.</p>
       <div class="proj-tags"><span class="tag">ROS</span><span class="tag">Python</span><span class="tag">VLMs</span><span class="tag">AWS SageMaker</span><span class="tag">Unitree Go1</span></div>
     </div>
-    <div class="proj reveal d1">
-      <div class="proj-header"><div class="proj-num">02</div><div class="proj-icon"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1"/><line x1="9" y1="7" x2="9" y2="4"/><line x1="12" y1="7" x2="12" y2="4"/><line x1="15" y1="7" x2="15" y2="4"/><line x1="9" y1="17" x2="9" y2="20"/><line x1="12" y1="17" x2="12" y2="20"/><line x1="15" y1="17" x2="15" y2="20"/><line x1="7" y1="9" x2="4" y2="9"/><line x1="7" y1="12" x2="4" y2="12"/><line x1="7" y1="15" x2="4" y2="15"/><line x1="17" y1="9" x2="20" y2="9"/><line x1="17" y1="12" x2="20" y2="12"/><line x1="17" y1="15" x2="20" y2="15"/></svg></div></div>
+    <div class="proj reveal">
+      <div class="proj-header"><div class="proj-num">04</div><div class="proj-icon"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1"/><line x1="9" y1="7" x2="9" y2="4"/><line x1="12" y1="7" x2="12" y2="4"/><line x1="15" y1="7" x2="15" y2="4"/><line x1="9" y1="17" x2="9" y2="20"/><line x1="12" y1="17" x2="12" y2="20"/><line x1="15" y1="17" x2="15" y2="20"/><line x1="7" y1="9" x2="4" y2="9"/><line x1="7" y1="12" x2="4" y2="12"/><line x1="7" y1="15" x2="4" y2="15"/><line x1="17" y1="9" x2="20" y2="9"/><line x1="17" y1="12" x2="20" y2="12"/><line x1="17" y1="15" x2="20" y2="15"/></svg></div></div>
       <p class="proj-eyebrow">Research · 2024–2025</p>
       <h3 class="proj-title">High-Agility Quadruped RL</h3>
       <p class="proj-body">Developed software for high-agility behaviors on the Unitree Go1 and HiWonder PuppyPi. Designed motion sequences for motion-capture data collection and applied Fourier analysis to identify frequency-domain characteristics and optimal stability parameters. <a href="https://doi.org/10.1109/SIEDS65500.2025.11021214" target="_blank" rel="noopener">Published at IEEE SIEDS 2025 ↗</a></p>
       <div class="proj-tags"><span class="tag">ROS</span><span class="tag">Python</span><span class="tag">C++</span><span class="tag">Fourier Analysis</span><span class="tag">IEEE Published</span></div>
-    </div>
-    <div class="proj reveal">
-      <div class="proj-header"><div class="proj-num">03</div><div class="proj-icon"><svg viewBox="0 0 24 24"><circle cx="5" cy="7" r="2"/><line x1="7" y1="7" x2="20" y2="7"/><line x1="4" y1="7" x2="4" y2="7" stroke-linecap="round"/><circle cx="12" cy="12" r="2"/><line x1="14" y1="12" x2="20" y2="12"/><line x1="4" y1="12" x2="10" y2="12"/><circle cx="7" cy="17" r="2"/><line x1="9" y1="17" x2="20" y2="17"/><line x1="4" y1="17" x2="5" y2="17"/></svg></div></div>
-      <p class="proj-eyebrow">Embedded Control</p>
-      <h3 class="proj-title">2-DOF Ball Balancing System</h3>
-      <p class="proj-body">Real-time closed-loop control system balancing a steel ball on a tilting platform using two servo actuators and a resistive touchscreen sensor. PID control implemented on Arduino with ADC-to-millimeter calibration; MATLAB/Simulink for modeling and controller tuning.</p>
-      <div class="proj-tags"><span class="tag">Arduino</span><span class="tag">Embedded C</span><span class="tag">PID</span><span class="tag">MATLAB</span><span class="tag">Simulink</span></div>
-    </div>
-    <div class="proj reveal d1">
-      <div class="proj-header"><div class="proj-num">04</div><div class="proj-icon"><svg viewBox="0 0 24 24"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg></div></div>
-      <p class="proj-eyebrow">Computer Vision</p>
-      <h3 class="proj-title">Fruit Detection System</h3>
-      <p class="proj-body">Computer vision pipeline detecting and classifying fruit using HSV color segmentation in OpenCV. Applied morphological filtering and contour detection to isolate regions, extract centroids, and draw bounding boxes around detected objects in static images.</p>
-      <div class="proj-tags"><span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">NumPy</span><span class="tag">HSV Segmentation</span></div>
     </div>
   </div>
 </section>
