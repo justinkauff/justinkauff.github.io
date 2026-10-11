@@ -180,7 +180,15 @@ section{padding:8rem 5vw;}
 
 /* PROJECTS */
 .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--rule);}
-.proj{background:var(--cream);padding:3rem;transition:background 0.3s;position:relative;overflow:hidden;}
+.proj{background:var(--cream);padding:3rem;transition:background 0.3s;position:relative;overflow:hidden;display:grid;grid-row:span 7;grid-template-rows:subgrid;row-gap:0;}
+/* Shared rows keep each part of a card level with the card beside it. */
+.proj>.proj-header{grid-row:1;}
+.proj>.proj-eyebrow{grid-row:2;}
+.proj>.proj-title{grid-row:3;}
+.proj>.proj-body{grid-row:4;}
+.proj>.proj-media,.proj>.proj-video{grid-row:5;}
+.proj>.proj-links{grid-row:6;}
+.proj>.proj-tags{grid-row:7;}
 .proj::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--rust);transform:scaleX(0);transform-origin:left;transition:transform 0.4s;}
 .proj:hover{background:var(--cream2);}
 .proj:hover::before{transform:scaleX(1);}
@@ -211,19 +219,19 @@ section{padding:8rem 5vw;}
 .proj-body{font-size:0.86rem;color:var(--mid);line-height:1.85;margin-bottom:1.75rem;}
 .proj-body a{color:var(--rust);text-decoration:none;border-bottom:1px solid var(--rust);}
 .proj-body a:hover{color:var(--ink);}
-.proj-tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
-.proj-video{margin:1.5rem 0;position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border:1px solid var(--rule);}
+.proj-tags{display:flex;flex-wrap:wrap;gap:0.4rem;align-self:start;}
+.proj-video{margin:1.5rem 0;position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--rule);}
 .proj-video iframe{position:absolute;top:0;left:0;width:100%;height:100%;}
 .proj-links{display:flex;gap:1rem;margin-bottom:1.25rem;flex-wrap:wrap;}
 .proj-link{font-family:var(--cond);font-size:0.65rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;color:var(--rust);border:1px solid var(--rust);padding:0.3rem 0.8rem;transition:all 0.2s;}
 .proj-link:hover{background:var(--rust);color:var(--cream);}
-.proj-media{margin:1.5rem 0;border:1px solid var(--rule);background:var(--cream2);}
-.proj-media img{width:100%;display:block;}
+.proj-media{margin:1.5rem 0;border:1px solid var(--rule);background:var(--cream2);aspect-ratio:16/9;display:flex;flex-direction:column;}
+.proj-media>img{flex:1 1 0;min-height:0;width:100%;object-fit:contain;display:block;}
 .proj-media figcaption{font-family:var(--cond);font-size:0.62rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--light);padding:0.55rem 0.8rem;}
-.car-stage{position:relative;}
-.car-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;}
+.car-stage{position:relative;flex:1 1 0;min-height:0;}
+.car-track{height:100%;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;}
 .car-track::-webkit-scrollbar{display:none;}
-.car-slide{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:10/7;}
+.car-slide{flex:0 0 100%;height:100%;scroll-snap-align:start;}
 .car-slide img{width:100%;height:100%;object-fit:cover;display:block;}
 .car-btn{position:absolute;top:50%;transform:translateY(-50%);width:2rem;height:2rem;border:none;border-radius:50%;background:rgba(240,234,216,0.92);color:var(--ink);font-size:1.3rem;line-height:1;cursor:pointer;opacity:0;transition:opacity 0.2s;}
 .car-btn.prev{left:0.6rem;}
@@ -231,10 +239,13 @@ section{padding:8rem 5vw;}
 .car-stage:hover .car-btn,.car-btn:focus-visible{opacity:1;}
 .car-btn:disabled{opacity:0 !important;pointer-events:none;}
 .car-count{position:absolute;top:0.6rem;right:0.6rem;background:rgba(20,18,9,0.7);color:var(--cream);font-family:var(--cond);font-size:0.62rem;font-weight:600;letter-spacing:0.1em;padding:0.2rem 0.55rem;border-radius:1rem;}
-.car-dots{display:flex;justify-content:center;gap:0.4rem;padding-top:0.65rem;}
-.car-dots button{width:6px;height:6px;padding:0;border:none;border-radius:50%;background:var(--light);opacity:0.45;cursor:pointer;transition:all 0.2s;}
+.car-dots{position:absolute;left:0;right:0;bottom:0.7rem;display:flex;justify-content:center;gap:0.4rem;pointer-events:none;}
+.car-dots button{pointer-events:auto;width:6px;height:6px;padding:0;border:none;border-radius:50%;background:var(--cream);box-shadow:0 0 3px rgba(0,0,0,0.5);opacity:0.6;cursor:pointer;transition:all 0.2s;}
 .car-dots button.on{background:var(--rust);opacity:1;}
 .carousel.single .car-btn,.carousel.single .car-dots,.carousel.single .car-count{display:none;}
+.carousel{position:relative;}
+.carousel figcaption{position:absolute;left:0;right:0;bottom:0;padding-top:1.6rem;color:var(--cream);background:linear-gradient(to bottom,transparent,rgba(20,18,9,0.7));pointer-events:none;}
+.carousel .car-dots{bottom:2.3rem;}
 @media(hover:none){.car-btn{display:none;}}
 .side-proj{display:grid;grid-template-columns:340px 1fr;gap:2rem;align-items:center;margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--rule);}
 .side-proj img{width:100%;display:block;border:1px solid var(--rule);}
@@ -377,21 +388,19 @@ footer{
         <div class="car-stage">
           <div class="car-track" tabindex="0">
             <div class="car-slide" data-cap="Punch-force testing on the load-cell target"><img src="assets/humanoid_1-web.jpg" alt="Unitree G1 humanoid throwing a punch at a padded load-cell target while the team watches from the control desk" loading="lazy"/></div>
+            <!-- Video: replace VIDEO_ID with the YouTube ID, then delete these comment markers. It becomes another carousel slide.
+            <div class="car-slide" data-cap="REK humanoid RL"><iframe src="https://www.youtube.com/embed/VIDEO_ID" title="REK humanoid RL" frameborder="0" style="width:100%;height:100%;display:block;"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+            -->
             <div class="car-slide" data-cap="Prepping the G1 on the safety gantry"><img src="assets/humanoid_2-web.jpg" alt="Two team members adjusting the Unitree G1 while it hangs from a safety gantry" loading="lazy"/></div>
           </div>
           <button class="car-btn prev" type="button" aria-label="Previous photo">‹</button>
           <button class="car-btn next" type="button" aria-label="Next photo">›</button>
           <span class="car-count"></span>
+          <div class="car-dots"></div>
         </div>
-        <div class="car-dots"></div>
         <figcaption>Unitree G1 · REK testing</figcaption>
       </figure>
-      <!-- Video: replace VIDEO_ID with the YouTube ID, then delete these comment markers.
-      <div class="proj-video">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="REK humanoid RL" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-      -->
       <div class="proj-tags"><span class="tag">Reinforcement Learning</span><span class="tag">PPO</span><span class="tag">MuJoCo</span><span class="tag">ROS 2</span><span class="tag">Python</span><span class="tag">Unitree G1</span></div>
     </div>
     <div class="proj reveal d1">
